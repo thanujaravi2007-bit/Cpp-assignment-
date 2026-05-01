@@ -1,0 +1,55 @@
+#include <iostream>
+using namespace std;
+class DivideByZero 
+{
+public:
+    void message()
+    {
+        cout << "Error: Cannot divide by zero!" << endl;
+    }
+};
+class NegativeNumber 
+{
+public:
+    void message()
+    {
+        cout << "Error: Negative numbers are not allowed!" << endl;
+    }
+};
+class LargeNumber
+{
+public:
+    void message()
+    {
+        cout << "Error: Number is too large!" << endl;
+    }
+};
+int main() 
+{
+    int a, b;
+    cout << "Enter two numbers: ";
+    cin >> a >> b;
+    try 
+    {
+        if (b == 0)
+            throw DivideByZero();
+        if (a < 0 || b < 0)
+            throw NegativeNumber();
+        if (a > 1000 || b > 1000)
+            throw LargeNumber();
+        cout << "Result: " << a / b << endl;
+    }
+    catch (DivideByZero e) 
+    {
+        e.message();
+    }
+    catch (NegativeNumber e)
+    {
+        e.message();
+    }
+    catch (LargeNumber e) 
+    {
+        e.message();
+    }
+    return 0;
+}
