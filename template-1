@@ -4,7 +4,6 @@ template <class T>
 class Calculator
 {
     T a,b;
-
 public:
     Calculator(T x,T y)
     {
