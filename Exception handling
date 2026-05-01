@@ -1,1 +1,31 @@
+#include <iostream>
+using namespace std;
+int main() 
+{
+    try
+    {
+        int choice;
+        cout << "Enter 1 or 2: ";
+        cin >> choice;
 
+        if (choice == 1)
+            throw 10;
+        else if (choice == 2)
+            throw 3.14;
+        else
+            throw 'A';
+    }
+    catch (int i) 
+    {
+        cout << "Integer exception: " << i;
+    }
+    catch (double d) 
+    {
+        cout << "Double exception: " << d;
+    }
+    catch (char c) 
+    {
+        cout << "Character exception: " << c;
+    }
+    return 0;
+}
