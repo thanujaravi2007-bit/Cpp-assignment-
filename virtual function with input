@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+class Shape
+{
+public:
+    virtual void area()
+    {
+        cout << "No area";
+    }
+};
+class Square : public Shape
+{
+    int a;
+public:
+    Square(int x) { a = x; }
+    void area()
+    {
+        cout << "Area = " << a * a;
+    }
+};
+int main()
+{
+    Shape* s;
+    Square sq(5);
+    s = &sq;
+    s->area();
+}
