@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+template <class T>
+class Test
+{
+    T data;
+public:
+    Test(T a) { data = a; }
+    void show() { cout << data; }
+};
+int main()
+{
+    Test<int> obj(10);
+    obj.show();
+}
