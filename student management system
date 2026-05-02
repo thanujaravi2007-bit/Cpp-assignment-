@@ -1,0 +1,42 @@
+#include <iostream>
+#include <vector>
+#include <fstream>
+using namespace std;
+class FileException {};
+template <class T>
+class Student
+{
+    T id;
+    string name;
+public:
+    Student(T i, string n) : id(i), name(n) {}
+
+    void display()
+    {
+        cout << id << " " << name << endl;
+    }
+    string getData()
+    {
+        return to_string(id) + " " + name;
+    }
+};
+
+int main()
+{
+    vector<Student<int>> students;
+    students.push_back(Student<int>(1, "Arun"));
+    students.push_back(Student<int>(2, "Divya"));
+    ofstream file("students.txt");
+    if (!file)
+        throw FileException();
+    for (auto &s : students)
+        file << s.getData() << endl;
+    file.close();
+    ifstream in("students.txt");
+    if (!in)
+        throw FileException();
+    string line;
+    while (getline(in, line))
+        cout << line << endl;
+    in.close();
+}
