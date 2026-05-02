@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+class BankException {};
+class Account
+{
+protected:
+    double balance;
+public:
+    virtual void deposit(double amt)
+    {
+        balance += amt;
+    }
+    virtual void withdraw(double amt) = 0;
+};
+class Savings : public Account
+{
+public:
+    void withdraw(double amt)
+    {
+        if (amt > balance)
+            throw BankException();
+        balance -= amt;
+    }
+};
+int main() 
+{
+    Savings s;
+    s.deposit(1000);
+    try
+    {
+        s.withdraw(2000);
+    }
+    catch (...)
+    {
+        cout << "Insufficient Balance";
+    }
+}
