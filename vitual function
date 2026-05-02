@@ -16,7 +16,8 @@ public:
         cout << "Derived Display";
     }
 };
-int main() {
+int main() 
+{
     Base* ptr;
     Derived d;
     ptr = &d;
