@@ -1,0 +1,46 @@
+#include <iostream>
+#include <vector>
+#include <fstream>
+using namespace std;
+class Book
+{
+protected:
+    string name;
+public:
+    virtual void display() = 0;
+};
+class TextBook : public Book
+{
+public:
+    TextBook(string n) { name = n; }
+    void display() { cout << "TextBook: " << name << endl; }
+};
+template <typename T>
+class Library
+{
+    vector<T> books;
+public:
+    void add(T b)
+    {
+        books.push_back(b);
+    }
+    void show()
+    {
+        for (auto &b : books)
+            b.display();
+    }
+    void save()
+    {
+        ofstream f("lib.txt");
+        for (auto &b : books)
+            f << "Book saved\n";
+    }
+};
+int main()
+{
+    Library<TextBook> lib;
+    lib.add(TextBook("C++"));
+    lib.add(TextBook("DSA"));
+    lib.show();
+    lib.save();
+}
