@@ -1,0 +1,14 @@
+#include <iostream>
+#include <fstream>
+#include <map>
+using namespace std;
+int main()
+{
+    ifstream file("data.txt");
+    map<string, int> wordCount;
+    string word;
+    while (file >> word)
+        wordCount[word]++;
+    for (auto &p : wordCount)
+        cout << p.first << " : " << p.second << endl;
+}
